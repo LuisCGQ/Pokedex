@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
 
+import Pokemon from "./components/Pokemon";
+
 class App extends React.Component {
   state = {
-    data: {},
+    data: { results: [] },
   };
 
   componentDidMount() {
@@ -23,7 +25,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <ul></ul>
+        <ul>
+          {this.state.data.results.map((pokemon) => (
+            <li key={pokemon.id}>
+              <Pokemon pokemon={pokemon} />
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
