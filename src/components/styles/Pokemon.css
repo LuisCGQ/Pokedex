@@ -1,0 +1,25 @@
+.Pokemon {
+  font-family: "Press Start 2P", cursive;
+  background-color: cyan;
+  text-align: center;
+  width: 180px;
+  height: 180px;
+  margin: 10px;
+  border: solid 10px silver;
+  border-radius: 40px;
+}
+
+.Pokemon__sprite {
+  margin-top: 20px;
+  transition: all 0.2s ease;
+}
+
+.Pokemon__sprite:hover {
+  position: relative;
+  transform: scale(2) rotate(5deg);
+}
+
+.Pokemon p {
+  margin-top: 10px;
+  text-transform: uppercase;
+}

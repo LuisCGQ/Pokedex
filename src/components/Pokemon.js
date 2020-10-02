@@ -1,5 +1,7 @@
 import React from "react";
 
+import "./styles/Pokemon.css";
+
 class Pokemon extends React.Component {
   state = {
     data: { results: [] },
@@ -16,7 +18,7 @@ class Pokemon extends React.Component {
 
     this.setState({
       data: data,
-      sprites: data.sprites.front_default,
+      sprite: data.sprites.front_default,
     });
   };
 
@@ -24,9 +26,10 @@ class Pokemon extends React.Component {
     return (
       <div className="Pokemon">
         <div className="Pokemon__card"></div>
-        <img src={this.state.sprites} alt="" />
+        <img className="Pokemon__sprite" src={this.state.sprite} alt="" />
         <p>
-          {this.state.data.id} {this.props.pokemon.name}
+          {this.state.data.id} <br />
+          {this.props.pokemon.name}
         </p>
       </div>
     );

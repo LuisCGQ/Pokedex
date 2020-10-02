@@ -5,6 +5,9 @@ import Pokemon from "./components/Pokemon";
 
 class App extends React.Component {
   state = {
+    nextPage: "https://pokeapi.co/api/v2/pokemon",
+    loading: true,
+    error: null,
     data: { results: [] },
   };
 
@@ -13,16 +16,29 @@ class App extends React.Component {
   }
 
   fetchPokemon = async () => {
-    const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
+    this.setState({ loading: true, error: null });
 
-    const data = await response.json();
+    try {
+      const response = await fetch(`${this.state.nextPage}`);
+      const data = await response.json();
 
-    this.setState({
-      data: data,
-    });
+      this.setState({
+        loading: false,
+        data: {
+          info: data.info,
+          results: [].concat(this.state.data.results, data.results),
+        },
+        nextPage: data.next,
+      });
+    } catch (error) {
+      this.setState({ loading: false, error: error });
+    }
   };
 
   render() {
+    if (this.state.error) {
+      return `Error: ${this.state.error}`;
+    }
     return (
       <div className="App">
         <ul>
@@ -32,6 +48,16 @@ class App extends React.Component {
             </li>
           ))}
         </ul>
+        {console.log(this.state.nextPage)}
+        {this.state.loading && (
+          <div className="loader">
+            <p>Cargando</p>
+          </div>
+        )}
+
+        {!this.state.loading && (
+          <button onClick={() => this.fetchPokemon()}>Load More</button>
+        )}
       </div>
     );
   }
