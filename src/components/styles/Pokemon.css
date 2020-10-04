@@ -9,7 +9,13 @@
   border-radius: 40px;
 }
 
+.Pokemon:hover {
+  background-color: blue;
+}
+
 .Pokemon__sprite {
+  max-height: 100px;
+  max-width: 120px;
   margin-top: 20px;
   transition: all 0.2s ease;
 }

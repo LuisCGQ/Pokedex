@@ -1,8 +1,17 @@
-.App {
+html {
+  margin: 0;
+}
+
+.container {
   max-width: 80%;
+}
+
+.App {
   margin: 0 auto;
+  background-color: yellow;
 }
 .App ul {
+  margin: 0;
   list-style: none;
   display: flex;
   justify-content: space-around;

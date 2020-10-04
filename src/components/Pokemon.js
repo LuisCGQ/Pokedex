@@ -18,7 +18,6 @@ class Pokemon extends React.Component {
 
     this.setState({
       data: data,
-      sprite: data.sprites.front_default,
     });
   };
 
@@ -26,7 +25,15 @@ class Pokemon extends React.Component {
     return (
       <div className="Pokemon">
         <div className="Pokemon__card"></div>
-        <img className="Pokemon__sprite" src={this.state.sprite} alt="" />
+        <img
+          className="Pokemon__sprite"
+          src={
+            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" +
+            this.state.data.id +
+            ".png"
+          }
+          alt={this.props.pokemon.name}
+        />
         <p>
           {this.state.data.id} <br />
           {this.props.pokemon.name}
